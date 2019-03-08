@@ -19,13 +19,15 @@ class Login extends MY_Controller
             $password = $this->input->post('password');
             echo $username;
             echo $password;
-            $this->load->model('loginmodel');
-            if ($this->loginmodel->login_valid($username, $password)) {
+            $this->load->model('LoginModel');
+            if ($this->LoginModel->login_valid($username, $password)) {
                 # code...
-                // valid cred login user
+                // valid cred login usert
+                echo "password_match";
             }
             else{
                 // login failed
+                echo "not match";
             }
             
         }
