@@ -17,13 +17,19 @@ class Login extends MY_Controller
             
             $username = $this->input->post('username');
             $password = $this->input->post('password');
-            echo $username;
-            echo $password;
+            // echo $username;
+            // echo $password;
             $this->load->model('LoginModel');
-            if ($this->LoginModel->login_valid($username, $password)) {
+            $login_id = $this->LoginModel->login_valid($username, $password);
+            if ($login_id) {
                 # code...
-                // valid cred login usert
-                echo "password_match";
+                $this->load->library('session');
+                $this->session->set_userdata('user_id',$login_id);
+                
+                // Since Admin login is sucessfull we load the admin page by view 
+                // $this->load->view('admin/admin_pannal');
+                // above way of loading view not good we should do this
+                return redirect('Admin/dashboard');  
             }
             else{
                 // login failed
@@ -31,7 +37,7 @@ class Login extends MY_Controller
             }
             
         }
-        else{
+        else{  // if validation unsuccessfull
             $this->load->view('public/admin_login');
         }
     }

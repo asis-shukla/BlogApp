@@ -6,7 +6,8 @@ class LoginModel extends CI_Model{
                     ->get('users');
 
         if($q->num_rows()){
-            return TRUE;
+            // print_r($q->row());
+            return $q->row()->id;
         }
         else{
             return FALSE;
