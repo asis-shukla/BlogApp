@@ -14,7 +14,20 @@ class Login extends MY_Controller
         $this->form_validation->set_error_delimiters("<p class='text-danger'>","</p>");
 
         if( $this->form_validation->run() ){
-            echo "valid";
+            
+            $username = $this->input->post('username');
+            $password = $this->input->post('password');
+            echo $username;
+            echo $password;
+            $this->load->model('loginmodel');
+            if ($this->loginmodel->login_valid($username, $password)) {
+                # code...
+                // valid cred login user
+            }
+            else{
+                // login failed
+            }
+            
         }
         else{
             $this->load->view('public/admin_login');
