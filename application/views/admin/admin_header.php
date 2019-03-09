@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
    <?= link_tag("assets/css/bootstrap.min.css") ?>
     <!-- <script src="main.js"></script> -->
-</head>
+
+  </head>
 
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -27,4 +28,7 @@
       <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
     </form>
   </div>
+  <div class="btn">
+   <?= anchor('login/logout','Logout')  ?>
+ </div>
 </nav>

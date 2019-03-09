@@ -41,6 +41,11 @@ class Login extends MY_Controller
             $this->load->view('public/admin_login');
         }
     }
+
+    public function logout(){
+        $this->session->unset_userdata('user_id');
+        return redirect('login');
+    }
 }
 
 
