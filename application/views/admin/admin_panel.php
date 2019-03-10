@@ -12,6 +12,15 @@
     </div>
 </div>
 
+<?php if( $feedback = $this->session->flashdata('feedback')): ?>
+<?php $feedback_class = $this->session->flashdata('feedback_class'); ?>
+  <div class="alert alert-dismissible <?= $feedback_class ?>">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <?php echo $feedback; ?>
+</div>
+<?php endif; ?>
+
+
     <table class="table">
     <thead>
     <th>Sr. No.</th>

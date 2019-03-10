@@ -20,6 +20,23 @@ class Admin extends CI_Controller{
         $this->load->library('form_validation');
         if($this->form_validation->run('add_article_rules')){
                 // Now we can store articles in our database
+                $post = $this->input->post();
+                unset($post['submit']);
+                $this->load->model('Articlesmodel');
+                if($this->Articlesmodel->add_articles($post)){
+                    // successfully inserted
+                    $this->session->set_flashdata('feedback',"Articles Added successfully");
+                    $this->session->set_flashdata('feedback_class',"alert-success");
+
+                }
+                else{
+                    // not inserted
+                    $this->session->set_flashdata('feedback',"Article insertion failed!");
+                    $this->session->set_flashdata('feedback_class',"alert-danger");
+                }
+                return redirect('Admin/dashboard');
+                //print_r($post);
+                //exit;
         }
         else{
             $this->load->view('admin/add_article');
