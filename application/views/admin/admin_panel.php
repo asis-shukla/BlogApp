@@ -5,6 +5,13 @@
 ?>
 
 <div class="container">
+<br>
+<div class="row">
+    <div class="col-lg-6 col-lg-offset-6">
+        <a href="" class="btn btn-primary pull-right">Add Article</a>
+    </div>
+</div>
+
     <table class="table">
     <thead>
     <th>Sr. No.</th>

@@ -12,6 +12,8 @@ class Admin extends CI_Controller{
     }
 
     public function add_article(){
+        $this->load->helper('form');
+        $this->load->view('admin/add_article.php');
 
     }
 
