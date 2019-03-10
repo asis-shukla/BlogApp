@@ -1,7 +1,10 @@
 <?php
 class Login extends MY_Controller
-{
+{   
     public function index(){
+        if ($this->session->userdata('user_id')){
+            redirect('Admin/dashboard');
+        }
         $this->load->view('public/admin_login');
     }
     public function admin_login(){
@@ -32,8 +35,9 @@ class Login extends MY_Controller
                 return redirect('Admin/dashboard');  
             }
             else{
-                // login failed
-                echo "not match";
+                // login failed password did not match or that user not exists
+                $this->session->set_flashdata('login_failed',"Invalid Username/Password");
+                return redirect('Login'); 
             }
             
         }

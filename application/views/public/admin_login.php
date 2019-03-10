@@ -11,6 +11,16 @@
   <fieldset>
     <legend>Admin Login</legend>
   <br>
+
+  <?php if( $error = $this->session->flashdata('login_failed')): ?>
+  <div class="alert alert-dismissible alert-danger">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <?php echo $error; ?>
+  <a class="alert-link">Try Correct username password combination</a>
+</div>
+<?php endif; ?>
+
+
     <div class="form-group">
       <label for="exampleInputEmail1">Username</label>
       
