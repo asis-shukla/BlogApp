@@ -1,7 +1,7 @@
 <?php include_once('admin_header.php')?>
 
 <div class="container"> 
-<?php echo form_open('login/admin_login', ['class'=>'form-horizontal']); ?>
+<?php echo form_open('Admin/store_article', ['class'=>'form-horizontal']); ?>
 <?php echo form_hidden('user_id', $this->session->userdata('user_id')); ?>
 
 <style>

@@ -16,6 +16,15 @@ class Admin extends CI_Controller{
         $this->load->view('admin/add_article.php');
 
     }
+    public function store_article(){
+        $this->load->library('form_validation');
+        if($this->form_validation->run('add_article_rules')){
+                // Now we can store articles in our database
+        }
+        else{
+            $this->load->view('admin/add_article');
+        }
+    }
 
     public function edit_article(){
 
