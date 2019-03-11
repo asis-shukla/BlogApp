@@ -42,12 +42,70 @@ class Admin extends CI_Controller{
             $this->load->view('admin/add_article');
         }
     }
+    
+    
+    public function update_article($article_id){
+      
+        $this->load->library('form_validation');
+        if($this->form_validation->run('add_article_rules')){
+                // Now we can store articles in our database
+                $post = $this->input->post();
+                unset($post['submit']);
+                $this->load->model('Articlesmodel');
+                if($this->Articlesmodel->update_article($article_id, $post)){
+                    // successfully inserted
+                    $this->session->set_flashdata('feedback',"Article Update successfully");
+                    $this->session->set_flashdata('feedback_class',"alert-success");
 
-    public function edit_article(){
-
+                }
+                else{
+                    // not inserted
+                    $this->session->set_flashdata('feedback',"Updation failed failed!");
+                    $this->session->set_flashdata('feedback_class',"alert-danger");
+                }
+                return redirect('Admin/dashboard');
+                //print_r($post);
+                //exit;
+        }
+        else{
+            $this->load->view('admin/edit_article');
+        }
     }
 
+
+    
+    
+    
+    
+    
+    
+    public function edit_article($article_id){   // we recieve article id from views/admin/admin_panel
+        $this->load->model('Articlesmodel');
+        $article = $this->Articlesmodel->find_article($article_id);
+        $this->load->view('admin/edit_article',['article'=>$article]);
+    }
+
+    
+    
+    
+    
     public function delete_article(){
+        $article_id = $this->input->post('article_id');
+        $this->load->model('Articlesmodel');
+        if($this->Articlesmodel->delete_article($article_id)){
+            // successfully deleted
+            $this->session->set_flashdata('feedback',"Article deleted successfully");
+            $this->session->set_flashdata('feedback_class',"alert-success");
+
+        }
+        else{
+            // not deleted
+            $this->session->set_flashdata('feedback',"Article deletion failed!");
+            $this->session->set_flashdata('feedback_class',"alert-danger");
+        }
+        return redirect('Admin/dashboard');
+        //print_r($post);
+        //exit;
 
     }
 

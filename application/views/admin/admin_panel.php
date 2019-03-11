@@ -32,11 +32,22 @@
     <?php foreach ($art as $article):  ?>
 
     <tr>
-        <td>1</td>
+        <td><?php echo $article->id ?></td>
         <td><?php echo $article->title ?> </td>
         <td>
-            <a href="" class="btn btn-primary">Edit</a>
-            <a href="" class="btn btn-danger">Delete</a>
+            <div class="row">
+                <div class="col-lg-2">
+                <?= anchor("Admin/edit_article/{$article->id}",'Edit',['class'=>"btn btn-primary"]); ?>
+                </div>
+                <div class="col-lg-2">
+                <?=
+                    form_open('Admin/delete_article'),
+                    form_hidden('article_id',$article->id),
+                    form_submit(['name'=>'submit','value'=>'Delete','class'=>"btn btn-danger"]),
+                    form_close();
+                ?>
+                </div>
+            </div>
         </td>
     </tr>
 
