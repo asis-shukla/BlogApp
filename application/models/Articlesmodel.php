@@ -1,8 +1,20 @@
 <?php
 class Articlesmodel extends CI_Model{
-    public function articles_list(){
+    
+    
+    public function articles_list($limit, $offset){
+        $user_id = $this->session->userdata('user_id');
+        $query = $this->db
+                            ->select(['title','id'])
+                            ->from('articles')
+                            ->limit($limit, $offset)
+                            ->where('user_id',$user_id)
+                            ->get();
 
+        return $query->result();
+    }
 
+    public function num_rows(){
         $user_id = $this->session->userdata('user_id');
         $query = $this->db
                             ->select(['title','id'])
@@ -10,12 +22,14 @@ class Articlesmodel extends CI_Model{
                             ->where('user_id',$user_id)
                             ->get();
 
-        return $query->result();
+        return $query->num_rows();
     }
+
+
     public function add_articles($array){
         return $this->db->insert('articles',$array);
-
     }
+
 
     public function find_article($article_id){
         $q = $this->db
@@ -36,6 +50,5 @@ class Articlesmodel extends CI_Model{
         return $this->db->delete('articles',['id'=>$article_id]);
     }
 }
-
 
 ?>

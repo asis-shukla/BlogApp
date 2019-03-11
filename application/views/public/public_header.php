@@ -19,7 +19,8 @@
   <div class="collapse navbar-collapse" id="navbarColor01">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Admin <span class="sr-only">(current)</span></a>
+        <?= anchor('Admin/', 'AdminLogin') ?>
+        <!-- <a class="nav-link" href="#">Admin Login<span class="sr-only">(current)</span></a> -->
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">

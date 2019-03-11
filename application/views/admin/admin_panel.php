@@ -28,11 +28,11 @@
     <th> Action </th>
     </thead>
 <tbody>
-    <?php if(count($art)):  ?>
-    <?php foreach ($art as $article):  ?>
-
+    <?php if(count($art)):
+    $count = $this->uri->segment(3);
+     foreach ($art as $article):  ?>
     <tr>
-        <td><?php echo $article->id ?></td>
+        <td><?php echo ++$count ?></td>
         <td><?php echo $article->title ?> </td>
         <td>
             <div class="row">
@@ -61,6 +61,8 @@
     <?php endif;?>
 </tbody>
     </table>
+ 
+    <?= $this->pagination->create_links(); ?>
 
 </div>
 
