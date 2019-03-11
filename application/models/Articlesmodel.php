@@ -49,6 +49,37 @@ class Articlesmodel extends CI_Model{
     public function delete_article($article_id){
         return $this->db->delete('articles',['id'=>$article_id]);
     }
+
+    public function count_all_articles(){
+            $query = $this->db
+                            ->select(['title','id'])
+                            ->from('articles')
+                            ->get();
+
+        return $query->num_rows();
+    }
+    
+    public function all_articles_list($limit, $offset){
+        $query = $this->db
+                            ->select(['title','id','created_at'])
+                            ->from('articles')
+                            ->limit($limit, $offset)
+                            ->order_by('created_at', 'DESC')
+                            ->get();
+
+        return $query->result();
+    }
+
+    public function find($article_id){
+        $query = $this->db
+                            ->from('articles')
+                            ->where('id',$article_id)
+                            ->get();
+        
+        return $query->row();
+    }
+
+
 }
 
 ?>
