@@ -2,7 +2,6 @@
 
 <div class="container"> 
 <?php echo form_open("Admin/update_article/{$article->id}", ['class'=>'form-horizontal']); ?>
-
 <style>
 .temp{
     margin-left: 180px;

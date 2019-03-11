@@ -3,6 +3,9 @@
      <h1>
          <?= $article->title ?>
      </h1>
+     <span class="pull-right">
+     <?= date('d M y H:i:s', strtotime($article->created_at)); ?>
+        </span>
      <hr>
      <p>
          <?= $article->body ?>

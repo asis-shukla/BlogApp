@@ -58,7 +58,6 @@ class Admin extends CI_Controller{
     
     
     public function update_article($article_id){
-      
         $this->load->library('form_validation');
         if($this->form_validation->run('add_article_rules')){
                 // Now we can store articles in our database
@@ -107,6 +106,9 @@ class Admin extends CI_Controller{
         //print_r($post);
         //exit;
 
+    }
+    public function create_account(){
+        $this->load->view('public/create_account');
     }
 
     

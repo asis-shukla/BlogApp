@@ -27,7 +27,7 @@ class Articlesmodel extends CI_Model{
 
 
     public function add_articles($array){
-        return $this->db->insert('articles',$array);
+        return $this->db->insert('articles', $array);
     }
 
 

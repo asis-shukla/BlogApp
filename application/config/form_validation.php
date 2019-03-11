@@ -6,7 +6,7 @@ $config = [
                                     [
                                         'field' => 'title',
                                         'label' => 'Title',
-                                        'rules' => 'required|alpha'
+                                        'rules' => 'required'
                                     ],
                                     [
                                         'field' => 'body',
